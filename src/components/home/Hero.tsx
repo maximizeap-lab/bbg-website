@@ -7,16 +7,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const PLAYER_ACHIEVEMENTS = [
-  "Marcus — Full Scholarship to Kansas State",
-  "Jaylen — Committed to UC Riverside",
-  "DeAndre — MLB Draft Selection",
-  "BBG 6th All-Star Game — 200+ Athletes",
-  "500+ Players Served Across South LA",
-  "J.P. Crawford — MLB All-Star & BBG Coach",
-  "Dom Smith — From Serra HS to the Big Leagues",
-  "40K+ Instagram Followers Strong",
-  "6 All-Star Games and Counting",
-  "100% Free Programming for Low-Income Kids",
+  "Tyresse Turner drafted by Cleveland Guardians",
+  "Druw Jones — #2 Overall Pick",
+  "50+ college commitments and counting",
+  "J.P. Crawford coaching the next generation",
+  "6 All-Star showcases and growing",
 ];
 
 const fadeUp = {
@@ -97,10 +92,10 @@ export default function Hero() {
             animate="visible"
             className="font-display text-6xl md:text-8xl lg:text-9xl text-white leading-[0.9] mb-6"
           >
-            FROM SOUTH LA
+            WHERE DREAMS
             <br />
-            TO THE{" "}
-            <span className="text-gold">BIG LEAGUES</span>
+            GET{" "}
+            <span className="text-gold">DRAFTED</span>
           </motion.h1>
 
           <motion.p
@@ -110,8 +105,8 @@ export default function Hero() {
             animate="visible"
             className="font-body text-white/80 text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
           >
-            Building the next generation of players, leaders, and men.
-            Free world-class baseball development for the kids who need it most.
+            12+ players drafted. 50+ college commitments. 500+ lives changed.
+            Baseball Generations is South LA&apos;s pipeline to the pros.
           </motion.p>
 
           <motion.div
@@ -121,10 +116,10 @@ export default function Hero() {
             animate="visible"
             className="flex flex-wrap gap-4"
           >
-            <Button asChild size="lg" variant="default">
+            <Button asChild size="lg" variant="default" className="bg-gold text-black hover:bg-gold/90">
               <Link href="/camps">REGISTER A PLAYER</Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
               <Link href="/donate">DONATE NOW</Link>
             </Button>
           </motion.div>

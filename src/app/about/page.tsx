@@ -83,12 +83,12 @@ export default function AboutPage() {
             a dream the same shot at the game — regardless of their zip code or
             bank account.
           </p>
-          <div className="mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-bbg-red via-gold to-bbg-red" />
+          <div className="mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-gold via-gold to-gold" />
         </div>
       </section>
 
       {/* ===== ORIGIN STORY ===== */}
-      <section className="relative bg-[#0D1B30] py-24">
+      <section className="relative bg-[#0A0A0A] py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             {/* Image */}
@@ -113,7 +113,7 @@ export default function AboutPage() {
               </p>
               <h2 className="mt-3 font-display text-5xl uppercase leading-none text-white md:text-6xl">
                 Born From<br />
-                <span className="text-bbg-red">The Struggle</span>
+                <span className="text-gold">The Struggle</span>
               </h2>
               <div className="mt-8 space-y-5 font-body text-base leading-relaxed text-white/70">
                 <p>
@@ -173,7 +173,7 @@ export default function AboutPage() {
                 {/* Photo placeholder */}
                 <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border-2 border-white/10 bg-white/5 transition-all duration-500 group-hover:border-gold/40">
                   {/* Initials fallback — shown behind the image */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy to-[#0D1B30]">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy to-[#0A0A0A]">
                     <span className="font-display text-3xl text-gold/60">
                       {founder.name
                         .split(" ")
@@ -206,7 +206,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== MISSION / VALUES ===== */}
-      <section className="relative bg-[#0D1B30] py-24">
+      <section className="relative bg-[#0A0A0A] py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-accent text-sm uppercase tracking-[0.25em] text-gold">
@@ -276,10 +276,10 @@ export default function AboutPage() {
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="relative bg-gradient-to-b from-[#0D1B30] to-navy py-24">
+      <section className="relative bg-gradient-to-b from-[#0A0A0A] to-navy py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="font-display text-5xl uppercase text-white md:text-6xl">
-            Be Part Of <span className="text-bbg-red">The Story</span>
+            Be Part Of <span className="text-gold">The Story</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl font-body text-white/60">
             Every dollar goes directly to keeping our programs free for the kids

@@ -14,7 +14,7 @@ export default function DonationCTA() {
   const donationAmount = selected === "custom" ? customValue : String(selected);
 
   return (
-    <section className="bg-bbg-red py-20 md:py-28 relative overflow-hidden">
+    <section className="bg-black py-20 md:py-28 relative overflow-hidden border-y border-gold/20">
       {/* Subtle pattern overlay */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -50,7 +50,7 @@ export default function DonationCTA() {
                 onClick={() => setSelected(amount)}
                 className={`font-accent text-lg uppercase tracking-wider px-8 py-3 rounded-full border-2 transition-all duration-200 ${
                   selected === amount
-                    ? "bg-white text-bbg-red border-white shadow-lg scale-105"
+                    ? "bg-white text-gold border-white shadow-lg scale-105"
                     : "bg-transparent text-white border-white/40 hover:border-white hover:bg-white/10"
                 }`}
               >
@@ -61,7 +61,7 @@ export default function DonationCTA() {
               onClick={() => setSelected("custom")}
               className={`font-accent text-lg uppercase tracking-wider px-8 py-3 rounded-full border-2 transition-all duration-200 ${
                 selected === "custom"
-                  ? "bg-white text-bbg-red border-white shadow-lg scale-105"
+                  ? "bg-white text-gold border-white shadow-lg scale-105"
                   : "bg-transparent text-white border-white/40 hover:border-white hover:bg-white/10"
               }`}
             >

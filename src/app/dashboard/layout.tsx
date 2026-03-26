@@ -47,7 +47,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
               active
-                ? "bg-[#C8102E] text-white shadow-md"
+                ? "bg-[#F5A623] text-black shadow-md"
                 : "text-white/60 hover:bg-white/10 hover:text-white"
             )}
           >
@@ -60,12 +60,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   );
 
   return (
-    <div className="flex h-screen bg-[#0A1628]">
+    <div className="flex h-screen bg-[#000000]">
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex lg:w-64 lg:flex-col border-r border-white/10">
         <div className="flex h-16 items-center gap-2 border-b border-white/10 px-6">
-          <div className="h-8 w-8 rounded-md bg-[#C8102E] flex items-center justify-center">
-            <span className="text-xs font-bold text-white">BBG</span>
+          <div className="h-8 w-8 rounded-md bg-[#F5A623] flex items-center justify-center">
+            <span className="text-xs font-bold text-black">BBG</span>
           </div>
           <span className="font-display text-lg font-bold text-white">Admin</span>
         </div>
@@ -79,10 +79,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             className="absolute inset-0 bg-black/60"
             onClick={() => setSidebarOpen(false)}
           />
-          <aside className="relative z-50 flex h-full w-64 flex-col bg-[#0A1628] border-r border-white/10">
+          <aside className="relative z-50 flex h-full w-64 flex-col bg-[#000000] border-r border-white/10">
             <div className="flex h-16 items-center justify-between border-b border-white/10 px-6">
               <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-md bg-[#C8102E] flex items-center justify-center">
+                <div className="h-8 w-8 rounded-md bg-[#F5A623] flex items-center justify-center">
                   <span className="text-xs font-bold text-white">BBG</span>
                 </div>
                 <span className="font-display text-lg font-bold text-white">Admin</span>
@@ -102,7 +102,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Top bar */}
-        <header className="flex h-16 items-center justify-between border-b border-white/10 bg-[#0A1628] px-4 lg:px-8">
+        <header className="flex h-16 items-center justify-between border-b border-white/10 bg-[#000000] px-4 lg:px-8">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarOpen(true)}

@@ -21,7 +21,7 @@ export default function EventsPage() {
     <div className="min-h-screen bg-navy">
       {/* Hero */}
       <section className="relative overflow-hidden px-6 pb-12 pt-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(200,16,46,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(245,166,35,0.1),transparent_50%)]" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
           <h1 className="mb-4 font-display text-6xl text-white md:text-7xl lg:text-8xl">
             Events
@@ -76,7 +76,7 @@ export default function EventsPage() {
                   className="group overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] transition-all hover:border-white/10 hover:bg-white/[0.04]"
                 >
                   {/* Image placeholder */}
-                  <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-bbg-red/20 via-navy to-gold/10">
+                  <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-gold/20 via-navy to-gold/10">
                     <div className="flex h-full w-full items-center justify-center">
                       <p className="font-display text-3xl text-white/10">
                         BBG
@@ -89,7 +89,7 @@ export default function EventsPage() {
                           ? "bg-gold text-navy"
                           : event.status === "past"
                             ? "bg-white/20 text-white/60"
-                            : "bg-bbg-red text-white"
+                            : "bg-gold text-white"
                       }`}
                     >
                       {event.status}

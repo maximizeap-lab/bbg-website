@@ -6,10 +6,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#0A1628",
-        "bbg-red": "#C8102E",
+        navy: "#000000",
+        "bbg-red": "#F5A623",
         gold: "#F5A623",
-        cream: "#F5F0E8",
+        cream: "#FFFFFF",
         dirt: "#8B5E3C",
         grass: "#2D6A2D",
         border: "hsl(var(--border))",

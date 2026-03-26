@@ -94,7 +94,7 @@ export default async function EventDetailPage({
                 ? "bg-gold text-navy"
                 : event.status === "past"
                   ? "bg-white/20 text-white/60"
-                  : "bg-bbg-red text-white"
+                  : "bg-gold text-white"
             }`}
           >
             {event.status}

@@ -52,7 +52,7 @@ export default function ContactPage() {
             Questions about programs, partnerships, or just want to get
             involved? We&apos;d love to hear from you.
           </p>
-          <div className="mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-bbg-red via-gold to-bbg-red" />
+          <div className="mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-gold via-gold to-gold" />
         </div>
       </section>
 
@@ -228,7 +228,7 @@ export default function ContactPage() {
                           {...register("name")}
                         />
                         {errors.name && (
-                          <p className="mt-1.5 font-body text-xs text-bbg-red">
+                          <p className="mt-1.5 font-body text-xs text-gold">
                             {errors.name.message}
                           </p>
                         )}
@@ -249,7 +249,7 @@ export default function ContactPage() {
                           {...register("email")}
                         />
                         {errors.email && (
-                          <p className="mt-1.5 font-body text-xs text-bbg-red">
+                          <p className="mt-1.5 font-body text-xs text-gold">
                             {errors.email.message}
                           </p>
                         )}
@@ -269,7 +269,7 @@ export default function ContactPage() {
                           {...register("subject")}
                         />
                         {errors.subject && (
-                          <p className="mt-1.5 font-body text-xs text-bbg-red">
+                          <p className="mt-1.5 font-body text-xs text-gold">
                             {errors.subject.message}
                           </p>
                         )}
@@ -291,7 +291,7 @@ export default function ContactPage() {
                           {...register("message")}
                         />
                         {errors.message && (
-                          <p className="mt-1.5 font-body text-xs text-bbg-red">
+                          <p className="mt-1.5 font-body text-xs text-gold">
                             {errors.message.message}
                           </p>
                         )}
@@ -341,7 +341,7 @@ export default function ContactPage() {
       </section>
 
       {/* ===== PLAYER INFO SHEET DOWNLOAD ===== */}
-      <section className="relative bg-[#0D1B30] py-20">
+      <section className="relative bg-[#0A0A0A] py-20">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
         <div className="mx-auto max-w-4xl px-6">

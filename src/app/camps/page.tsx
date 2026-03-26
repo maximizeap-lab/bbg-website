@@ -73,7 +73,7 @@ const selectClass =
 
 const labelClass = "block mb-1.5 text-sm font-medium text-white/70 font-body";
 
-const errorClass = "mt-1 text-xs text-bbg-red font-body";
+const errorClass = "mt-1 text-xs text-gold font-body";
 
 /* -------------------------------------------------------------------------- */
 /*  Component                                                                 */
@@ -199,7 +199,7 @@ export default function CampsPage() {
             className="h-full w-full"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(135deg, #C8102E 0, #C8102E 1px, transparent 0, transparent 50%)",
+                "repeating-linear-gradient(135deg, #F5A623 0, #F5A623 1px, transparent 0, transparent 50%)",
               backgroundSize: "60px 60px",
             }}
           />

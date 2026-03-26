@@ -267,14 +267,14 @@ export default function PlayersPage() {
                 <div className="flex flex-col items-center px-6 pb-6 pt-10">
                   {/* Circular placeholder image */}
                   <div className="relative mb-5">
-                    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-bbg-red/30 to-gold/20 ring-2 ring-white/10 transition-all duration-300 group-hover:ring-gold/40">
+                    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-gold/30 to-gold/20 ring-2 ring-white/10 transition-all duration-300 group-hover:ring-gold/40">
                       <span className="font-accent text-3xl text-white/30">
                         {player.first_name[0]}
                         {player.last_name[0]}
                       </span>
                     </div>
                     {/* Jersey number badge */}
-                    <div className="absolute -bottom-1 -right-1 flex h-10 w-10 items-center justify-center rounded-full bg-bbg-red shadow-lg">
+                    <div className="absolute -bottom-1 -right-1 flex h-10 w-10 items-center justify-center rounded-full bg-gold shadow-lg">
                       <span className="font-accent text-lg leading-none text-white">
                         {player.jersey_number}
                       </span>

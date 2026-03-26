@@ -8,20 +8,17 @@ import { Button } from "@/components/ui/button";
 
 const GRID_IMAGES = [
   "/images/events/allstar-01.jpg",
+  "/images/events/allstar-03.jpg",
+  "/images/events/allstar-04.jpg",
+  "/images/events/allstar-06.jpg",
+  "/images/events/allstar-07.jpg",
+  "/images/events/allstar-09.jpg",
   "/images/events/allstar-10.jpg",
+  "/images/events/allstar-11.jpg",
   "/images/events/allstar-20.jpg",
+  "/images/events/allstar-25.jpg",
   "/images/events/allstar-30.jpg",
-  "/images/events/allstar-40.jpg",
-  "/images/events/allstar-50.jpg",
-];
-
-const PLACEHOLDER_GRADIENTS = [
-  "from-[#2a1020] to-navy/90",
-  "from-gold/20 to-navy/80",
-  "from-navy/60 to-bbg-red/30",
-  "from-[#0f2140] to-[#2a1020]",
-  "from-navy/90 to-gold/20",
-  "from-bbg-red/30 to-navy",
+  "/images/events/allstar-39.jpg",
 ];
 
 const containerVariants = {
@@ -41,7 +38,7 @@ const cardVariants = {
 };
 
 export default function ImpactWall() {
-  const allItems = [...GRID_IMAGES.map((src) => ({ type: "image" as const, src })), ...PLACEHOLDER_GRADIENTS.map((gradient) => ({ type: "gradient" as const, gradient }))];
+  const allItems = GRID_IMAGES.map((src) => ({ type: "image" as const, src }));
   const [visiblePosts, setVisiblePosts] = useState(6);
 
   return (
@@ -59,12 +56,10 @@ export default function ImpactWall() {
             {INSTAGRAM_HANDLE}
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-[0.95] mb-4">
-            EVERY POST. EVERY KID.
-            <br />
-            EVERY <span className="text-gold">DREAM.</span>
+            THE PROOF IS ON THE <span className="text-gold">FIELD</span>
           </h2>
           <p className="font-body text-white/50 text-base md:text-lg max-w-xl mx-auto">
-            Over 40K followers watching these kids chase what most people said was impossible.
+            40,000+ followers watching these kids change their lives.
           </p>
         </motion.div>
 
@@ -80,10 +75,10 @@ export default function ImpactWall() {
             <motion.div
               key={story.player_name}
               variants={cardVariants}
-              className="group relative rounded-xl overflow-hidden bg-gradient-to-br from-[#1a2d4a] to-[#2a1020] border border-white/10 hover:border-gold/30 transition-all duration-300"
+              className="group relative rounded-xl overflow-hidden bg-gradient-to-br from-[#1a2d4a] to-[#1a1a1a] border border-white/10 hover:border-gold/30 transition-all duration-300"
             >
               {/* Gradient placeholder image */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-navy via-[#1a2d4a] to-[#2a1020] relative">
+              <div className="aspect-[4/3] bg-gradient-to-br from-navy via-[#1a2d4a] to-[#1a1a1a] relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent" />
               </div>
 
@@ -133,16 +128,14 @@ export default function ImpactWall() {
               className="group cursor-pointer"
             >
               <div
-                className={`aspect-square rounded-md relative overflow-hidden border border-white/5 hover:border-gold/30 transition-all duration-300 ${item.type === "gradient" ? `bg-gradient-to-br ${item.gradient}` : ""}`}
+                className="aspect-square rounded-md relative overflow-hidden border border-white/5 hover:border-gold/30 transition-all duration-300"
               >
-                {item.type === "image" && (
-                  <Image
-                    src={item.src}
-                    alt="BBG event photo"
-                    fill
-                    className="object-cover"
-                  />
-                )}
+                <Image
+                  src={item.src}
+                  alt="BBG event photo"
+                  fill
+                  className="object-cover"
+                />
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-navy/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -151,12 +144,7 @@ export default function ImpactWall() {
                   </svg>
                 </div>
 
-                {/* Subtle shimmer effect placeholder (gradient items only) */}
-                {item.type === "gradient" && (
-                  <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                    <div className="w-8 h-8 rounded-full border-2 border-white/30" />
-                  </div>
-                )}
+                {/* All items are real images now */}
               </div>
             </motion.div>
           ))}

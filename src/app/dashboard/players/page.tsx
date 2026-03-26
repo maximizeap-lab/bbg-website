@@ -178,7 +178,7 @@ export default function PlayersPage() {
       {/* Add/Edit Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="w-full max-w-lg rounded-xl border border-white/10 bg-[#0A1628] p-6 shadow-2xl">
+          <div className="w-full max-w-lg rounded-xl border border-white/10 bg-[#000000] p-6 shadow-2xl">
             <div className="flex items-center justify-between mb-6">
               <h3 className="font-display text-xl font-bold text-white">
                 {editingPlayer ? "Edit Player" : "Add Player"}

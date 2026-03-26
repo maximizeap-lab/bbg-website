@@ -262,7 +262,7 @@ export default async function PlayerProfilePage({
       {/* ================================================================== */}
       <section className="relative flex min-h-[60vh] items-end overflow-hidden">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-[#111D35] to-bbg-red/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-[#0A0A0A] to-gold/30" />
 
         {/* Giant jersey number watermark */}
         <span className="pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 select-none font-accent text-[20rem] leading-none text-white/[0.04] sm:text-[28rem] lg:right-16 lg:text-[36rem]">

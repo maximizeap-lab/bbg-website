@@ -52,10 +52,43 @@ export const STAFF: StaffMember[] = [
 ];
 
 export const IMPACT_STATS = [
-  { value: 500, suffix: "+", label: "Players Served" },
-  { value: 6, suffix: "", label: "All-Star Games" },
-  { value: 40, suffix: "K+", label: "IG Followers" },
-  { value: 100, suffix: "%", label: "Free to Low-Income Kids" },
+  { value: 500, suffix: "+", label: "Players Developed" },
+  { value: 50, suffix: "+", label: "College Commitments" },
+  { value: 12, suffix: "+", label: "Players Drafted" },
+  { value: 6, suffix: "", label: "All-Star Showcases" },
+] as const;
+
+export const DRAFTED_PLAYERS = [
+  { name: "Tyresse Turner", team: "Cleveland Guardians", round: "13th Round, 2022", school: "USC", position: "INF", note: "Trained with BBG from its inception. All-Pac-12 honors at USC. .330 BA, 33 RBI, 40 runs." },
+  { name: "Druw Jones", team: "Arizona Diamondbacks", round: "2nd Overall, 2022", school: "Wesleyan HS", position: "OF", note: "Won BBG All-Star Game Home Run Derby. Son of Andruw Jones. Top MLB prospect." },
+  { name: "J.P. Crawford", team: "Seattle Mariners", round: "1st Round, 2013", school: "Lakewood HS", position: "SS", note: "South LA native. Gold Glove winner. Now coaches at BBG events giving back to the community." },
+] as const;
+
+export const TESTIMONIALS = [
+  {
+    name: "Tyresse Turner",
+    role: "Cleveland Guardians — BBG Alum",
+    quote: "BBG changed the trajectory of my life. I went from playing on dirt lots in South LA to getting drafted by the Guardians. Dom and Ron showed me what was possible.",
+    image: "/images/players/player-action-2.jpg",
+  },
+  {
+    name: "Dylan Lina",
+    role: "D1 Prospect — Carson, CA",
+    quote: "Before BBG, I didn't have access to real coaching or scouts. They opened every door for me. Now I'm playing at the level I always dreamed of.",
+    image: "/images/players/player-action-4.jpg",
+  },
+  {
+    name: "J.P. Crawford",
+    role: "Seattle Mariners — BBG Coach",
+    quote: "I come back every year because these kids deserve the same chance I got. BBG is the real deal — it's family, it's development, it's opportunity.",
+    image: "/images/players/player-action-1.jpg",
+  },
+  {
+    name: "Parent — Compton",
+    role: "BBG Parent",
+    quote: "My son couldn't afford travel ball. BBG took him in for free, got him in front of college coaches, and now he's playing on a scholarship. They saved his future.",
+    image: "/images/events/allstar-25.jpg",
+  },
 ] as const;
 
 export const SEED_EVENTS: Partial<Event>[] = [
@@ -91,31 +124,31 @@ export const SEED_EVENTS: Partial<Event>[] = [
 
 export const SAMPLE_IMPACT_STORIES: ImpactStory[] = [
   {
-    player_name: "Marcus",
-    headline: "From Compton to Kansas State on a Full Scholarship",
+    player_name: "Tyresse Turner",
+    headline: "From South LA to the Cleveland Guardians — 13th Round Draft Pick",
     quote:
-      "BBG gave me a chance when nobody else would. Coach Ron believed in me before I believed in myself.",
-    photo_url: "/images/players/placeholder-1.jpg",
-    outcome: "Full Scholarship — Kansas State",
-    year_joined: 2019,
+      "BBG changed the trajectory of my life. I went from playing on dirt lots in South LA to getting drafted by the Guardians.",
+    photo_url: "/images/players/player-action-2.jpg",
+    outcome: "MLB Draft — Cleveland Guardians",
+    year_joined: 2017,
   },
   {
-    player_name: "Jaylen",
-    headline: "First in His Family to Play College Ball",
+    player_name: "Druw Jones",
+    headline: "BBG Home Run Derby Champion to #2 Overall Pick",
     quote:
-      "I didn't even know how to talk to college coaches. BBG taught me everything — the game and the business.",
-    photo_url: "/images/players/placeholder-2.jpg",
-    outcome: "Committed — UC Riverside",
+      "The BBG All-Star Game was one of the best showcases I've been to. The energy, the competition — it's real.",
+    photo_url: "/images/players/player-action-3.jpg",
+    outcome: "#2 Overall Pick — Arizona Diamondbacks",
     year_joined: 2020,
   },
   {
-    player_name: "DeAndre",
-    headline: "From South LA Sandlots to the MLB Draft",
+    player_name: "Dylan Lina",
+    headline: "Carson Prospect Showcased at BBG — Now D1 Committed",
     quote:
-      "Dom showed me what was possible. He came from the same streets I did. That changed everything.",
-    photo_url: "/images/players/placeholder-3.jpg",
-    outcome: "MLB Draft Selection",
-    year_joined: 2018,
+      "Before BBG, I didn't have access to real coaching or scouts. They opened every door for me.",
+    photo_url: "/images/players/player-action-4.jpg",
+    outcome: "D1 College Commitment",
+    year_joined: 2021,
   },
 ];
 

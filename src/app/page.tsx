@@ -1,8 +1,10 @@
 import Hero from "@/components/home/Hero";
 import ImpactCounters from "@/components/home/ImpactCounters";
+import DraftedPlayersSection from "@/components/home/DraftedPlayers";
 import AboutTeaser from "@/components/home/AboutTeaser";
 import EventsStrip from "@/components/home/EventsStrip";
 import ImpactWall from "@/components/home/ImpactWall";
+import TestimonialsSection from "@/components/home/Testimonials";
 import DonationCTA from "@/components/home/DonationCTA";
 import MerchPreview from "@/components/home/MerchPreview";
 
@@ -33,6 +35,11 @@ export default function HomePage() {
 
       <StitchingDivider />
 
+      {/* Drafted players showcase */}
+      <DraftedPlayersSection />
+
+      <StitchingDivider />
+
       {/* About BBG teaser */}
       <AboutTeaser />
 
@@ -43,6 +50,11 @@ export default function HomePage() {
 
       {/* Impact stories + Instagram wall */}
       <ImpactWall />
+
+      <StitchingDivider />
+
+      {/* Testimonials carousel */}
+      <TestimonialsSection />
 
       <StitchingDivider />
 

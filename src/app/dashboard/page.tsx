@@ -32,7 +32,7 @@ const STATS = [
     trend: "+28",
     trendUp: true,
     icon: ClipboardList,
-    color: "bg-[#C8102E]",
+    color: "bg-[#F5A623]",
   },
   {
     label: "Total Donations (MTD)",

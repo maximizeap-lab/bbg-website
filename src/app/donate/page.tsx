@@ -100,10 +100,10 @@ export default function DonatePage() {
       {/* ───────── ABOVE THE FOLD: Split Screen ───────── */}
       <section className="relative grid min-h-[90vh] lg:grid-cols-2">
         {/* Left — Emotional Appeal */}
-        <div className="relative flex flex-col justify-center bg-gradient-to-br from-navy via-[#0d1e38] to-navy px-8 py-20 lg:px-16">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(200,16,46,0.12),transparent_60%)]" />
+        <div className="relative flex flex-col justify-center bg-gradient-to-br from-navy via-[#0A0A0A] to-navy px-8 py-20 lg:px-16">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(245,166,35,0.12),transparent_60%)]" />
           <div className="relative z-10 max-w-xl">
-            <p className="mb-4 font-accent text-sm uppercase tracking-[0.25em] text-bbg-red">
+            <p className="mb-4 font-accent text-sm uppercase tracking-[0.25em] text-gold">
               {INSTAGRAM_HANDLE}
             </p>
 
@@ -148,7 +148,7 @@ export default function DonatePage() {
         </div>
 
         {/* Right — Donation Form */}
-        <div className="flex items-center justify-center bg-gradient-to-b from-[#0f1f3a] to-navy px-6 py-16 lg:px-12">
+        <div className="flex items-center justify-center bg-gradient-to-b from-[#0A0A0A] to-navy px-6 py-16 lg:px-12">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="w-full max-w-md space-y-6"
@@ -176,7 +176,7 @@ export default function DonatePage() {
                 }`}
               >
                 Give Monthly
-                <span className="absolute -top-2 right-2 rounded-full bg-bbg-red px-2 py-0.5 font-body text-[10px] font-bold text-white">
+                <span className="absolute -top-2 right-2 rounded-full bg-gold px-2 py-0.5 font-body text-[10px] font-bold text-white">
                   Recommended
                 </span>
               </button>
@@ -252,7 +252,7 @@ export default function DonatePage() {
                     {...register("first_name")}
                   />
                   {errors.first_name && (
-                    <p className="mt-1 font-body text-xs text-bbg-red">
+                    <p className="mt-1 font-body text-xs text-gold">
                       {errors.first_name.message}
                     </p>
                   )}
@@ -263,7 +263,7 @@ export default function DonatePage() {
                     {...register("last_name")}
                   />
                   {errors.last_name && (
-                    <p className="mt-1 font-body text-xs text-bbg-red">
+                    <p className="mt-1 font-body text-xs text-gold">
                       {errors.last_name.message}
                     </p>
                   )}
@@ -276,7 +276,7 @@ export default function DonatePage() {
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="mt-1 font-body text-xs text-bbg-red">
+                  <p className="mt-1 font-body text-xs text-gold">
                     {errors.email.message}
                   </p>
                 )}
@@ -354,7 +354,7 @@ export default function DonatePage() {
             </p>
 
             {errors.amount_cents && (
-              <p className="text-center font-body text-xs text-bbg-red">
+              <p className="text-center font-body text-xs text-gold">
                 {errors.amount_cents.message}
               </p>
             )}
@@ -363,7 +363,7 @@ export default function DonatePage() {
       </section>
 
       {/* ───────── TRUST BUILDERS ───────── */}
-      <section className="border-t border-white/5 bg-[#0d1e38] px-6 py-20">
+      <section className="border-t border-white/5 bg-[#0A0A0A] px-6 py-20">
         <div className="mx-auto max-w-5xl">
           {/* Join count + ticker */}
           <div className="mb-12 text-center">

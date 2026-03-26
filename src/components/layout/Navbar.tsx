@@ -36,7 +36,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0A1628]/95 backdrop-blur-md shadow-lg"
+            ? "bg-[#000000]/95 backdrop-blur-md shadow-lg"
             : "bg-transparent"
         }`}
       >
@@ -44,7 +44,7 @@ export default function Navbar() {
           <div className="flex h-16 items-center justify-between md:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <span className="font-bebas text-2xl tracking-wider text-[#F5F0E8] md:text-3xl">
+              <span className="font-bebas text-2xl tracking-wider text-[#FFFFFF] md:text-3xl">
                 BASEBALL{" "}
                 <span className="text-[#F5A623]">GENERATIONS</span>
               </span>
@@ -56,7 +56,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-md px-3 py-2 font-oswald text-sm uppercase tracking-wide text-[#F5F0E8]/80 transition-colors hover:text-[#F5A623]"
+                  className="rounded-md px-3 py-2 font-oswald text-sm uppercase tracking-wide text-[#FFFFFF]/80 transition-colors hover:text-[#F5A623]"
                 >
                   {link.label}
                 </Link>
@@ -66,19 +66,19 @@ export default function Navbar() {
             {/* Desktop Actions */}
             <div className="hidden items-center gap-3 lg:flex">
               <Link href="/donate">
-                <Button className="bg-[#F5A623] font-oswald text-sm uppercase tracking-wider text-[#0A1628] hover:bg-[#F5A623]/90">
+                <Button className="bg-[#F5A623] font-oswald text-sm uppercase tracking-wider text-[#000000] hover:bg-[#F5A623]/90">
                   Donate
                 </Button>
               </Link>
 
               <button
                 onClick={toggleCart}
-                className="relative rounded-md p-2 text-[#F5F0E8]/80 transition-colors hover:text-[#F5A623]"
+                className="relative rounded-md p-2 text-[#FFFFFF]/80 transition-colors hover:text-[#F5A623]"
                 aria-label="Open cart"
               >
                 <ShoppingBag className="h-5 w-5" />
                 {totalItems > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#C8102E] font-oswald text-[10px] font-bold text-white">
+                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#F5A623] font-oswald text-[10px] font-bold text-black">
                     {totalItems}
                   </span>
                 )}
@@ -89,12 +89,12 @@ export default function Navbar() {
             <div className="flex items-center gap-2 lg:hidden">
               <button
                 onClick={toggleCart}
-                className="relative rounded-md p-2 text-[#F5F0E8]/80 transition-colors hover:text-[#F5A623]"
+                className="relative rounded-md p-2 text-[#FFFFFF]/80 transition-colors hover:text-[#F5A623]"
                 aria-label="Open cart"
               >
                 <ShoppingBag className="h-5 w-5" />
                 {totalItems > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#C8102E] font-oswald text-[10px] font-bold text-white">
+                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#F5A623] font-oswald text-[10px] font-bold text-black">
                     {totalItems}
                   </span>
                 )}
@@ -102,7 +102,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setMobileOpen(true)}
-                className="rounded-md p-2 text-[#F5F0E8] transition-colors hover:text-[#F5A623]"
+                className="rounded-md p-2 text-[#FFFFFF] transition-colors hover:text-[#F5A623]"
                 aria-label="Open menu"
               >
                 <Menu className="h-6 w-6" />
@@ -123,18 +123,18 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed right-0 top-0 z-[70] flex h-full w-[300px] max-w-[85vw] flex-col bg-[#0A1628] shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
+        className={`fixed right-0 top-0 z-[70] flex h-full w-[300px] max-w-[85vw] flex-col bg-[#000000] shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Drawer Header */}
-        <div className="flex items-center justify-between border-b border-[#F5F0E8]/10 px-6 py-5">
-          <span className="font-bebas text-xl tracking-wider text-[#F5F0E8]">
+        <div className="flex items-center justify-between border-b border-[#FFFFFF]/10 px-6 py-5">
+          <span className="font-bebas text-xl tracking-wider text-[#FFFFFF]">
             MENU
           </span>
           <button
             onClick={() => setMobileOpen(false)}
-            className="rounded-md p-1 text-[#F5F0E8]/70 transition-colors hover:text-[#F5A623]"
+            className="rounded-md p-1 text-[#FFFFFF]/70 transition-colors hover:text-[#F5A623]"
             aria-label="Close menu"
           >
             <X className="h-6 w-6" />
@@ -149,7 +149,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block rounded-md px-3 py-3 font-oswald text-lg uppercase tracking-wide text-[#F5F0E8]/80 transition-colors hover:bg-[#F5F0E8]/5 hover:text-[#F5A623]"
+                  className="block rounded-md px-3 py-3 font-oswald text-lg uppercase tracking-wide text-[#FFFFFF]/80 transition-colors hover:bg-[#FFFFFF]/5 hover:text-[#F5A623]"
                 >
                   {link.label}
                 </Link>
@@ -159,9 +159,9 @@ export default function Navbar() {
         </nav>
 
         {/* Drawer Footer */}
-        <div className="border-t border-[#F5F0E8]/10 px-6 py-6">
+        <div className="border-t border-[#FFFFFF]/10 px-6 py-6">
           <Link href="/donate" onClick={() => setMobileOpen(false)}>
-            <Button className="w-full bg-[#F5A623] font-oswald text-base uppercase tracking-wider text-[#0A1628] hover:bg-[#F5A623]/90">
+            <Button className="w-full bg-[#F5A623] font-oswald text-base uppercase tracking-wider text-[#000000] hover:bg-[#F5A623]/90">
               Donate
             </Button>
           </Link>

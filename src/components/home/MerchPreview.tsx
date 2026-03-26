@@ -20,7 +20,7 @@ export default function MerchPreview() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="font-accent text-bbg-red text-sm uppercase tracking-[0.3em] mb-3">
+          <p className="font-accent text-gold text-sm uppercase tracking-[0.3em] mb-3">
             Official Gear
           </p>
           <h2 className="font-display text-4xl md:text-5xl text-navy">
@@ -39,7 +39,7 @@ export default function MerchPreview() {
             >
               <Link href={`/shop/${product.id}`} className="group block">
                 {/* Product image placeholder */}
-                <div className="aspect-square rounded-lg bg-gradient-to-br from-navy/10 via-navy/5 to-bbg-red/5 mb-4 overflow-hidden relative border border-navy/10">
+                <div className="aspect-square rounded-lg bg-gradient-to-br from-navy/10 via-navy/5 to-gold/5 mb-4 overflow-hidden relative border border-navy/10">
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <svg
@@ -63,7 +63,7 @@ export default function MerchPreview() {
                 </div>
 
                 {/* Product info */}
-                <h3 className="font-body text-navy font-semibold text-sm md:text-base leading-snug group-hover:text-bbg-red transition-colors line-clamp-2">
+                <h3 className="font-body text-navy font-semibold text-sm md:text-base leading-snug group-hover:text-gold transition-colors line-clamp-2">
                   {product.name}
                 </h3>
                 <p className="font-accent text-navy/60 text-base mt-1">

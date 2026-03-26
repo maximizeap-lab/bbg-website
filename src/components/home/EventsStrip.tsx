@@ -81,7 +81,7 @@ export default function EventsStrip() {
                   {/* Date badge + past label */}
                   <div className="flex items-start justify-between mb-5">
                     {date && (
-                      <div className="bg-bbg-red rounded-md px-4 py-3 text-center min-w-[70px]">
+                      <div className="bg-gold rounded-md px-4 py-3 text-center min-w-[70px]">
                         <span className="block font-accent text-white/80 text-xs tracking-wider">
                           {date.month}
                         </span>

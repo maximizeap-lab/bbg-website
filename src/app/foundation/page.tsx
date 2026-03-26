@@ -37,7 +37,7 @@ const PROBLEM_STATS = [
 
 const ALLOCATION = [
   { label: "Programs & Player Development", percent: 70, color: "bg-gold" },
-  { label: "Operations & Events", percent: 20, color: "bg-bbg-red" },
+  { label: "Operations & Events", percent: 20, color: "bg-gold" },
   { label: "Administration", percent: 10, color: "bg-white/40" },
 ];
 
@@ -125,10 +125,10 @@ export default function FoundationPage() {
       </section>
 
       {/* ===== THE PROBLEM ===== */}
-      <section className="relative bg-[#0D1B30] py-24">
+      <section className="relative bg-[#0A0A0A] py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
-            <p className="font-accent text-sm uppercase tracking-[0.25em] text-bbg-red">
+            <p className="font-accent text-sm uppercase tracking-[0.25em] text-gold">
               Why This Matters
             </p>
             <h2 className="mt-3 font-display text-5xl uppercase text-white md:text-6xl">
@@ -140,9 +140,9 @@ export default function FoundationPage() {
             {PROBLEM_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-bbg-red/10 via-transparent to-transparent p-8 transition-all duration-500 hover:border-bbg-red/30"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-gold/10 via-transparent to-transparent p-8 transition-all duration-500 hover:border-gold/30"
               >
-                <p className="font-accent text-5xl font-bold text-bbg-red md:text-6xl">
+                <p className="font-accent text-5xl font-bold text-gold md:text-6xl">
                   {stat.number}
                 </p>
                 <p className="mt-4 font-display text-lg uppercase text-white">
@@ -152,8 +152,8 @@ export default function FoundationPage() {
                   {stat.description}
                 </p>
                 {/* Corner accent */}
-                <div className="absolute right-0 top-0 h-20 w-1 bg-gradient-to-b from-bbg-red/50 to-transparent" />
-                <div className="absolute right-0 top-0 h-1 w-20 bg-gradient-to-l from-bbg-red/50 to-transparent" />
+                <div className="absolute right-0 top-0 h-20 w-1 bg-gradient-to-b from-gold/50 to-transparent" />
+                <div className="absolute right-0 top-0 h-1 w-20 bg-gradient-to-l from-gold/50 to-transparent" />
               </div>
             ))}
           </div>
@@ -223,7 +223,7 @@ export default function FoundationPage() {
       </section>
 
       {/* ===== IMPACT NUMBERS ===== */}
-      <section className="relative bg-[#0D1B30] py-20">
+      <section className="relative bg-[#0A0A0A] py-20">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
@@ -266,7 +266,7 @@ export default function FoundationPage() {
               >
                 {/* Player photo placeholder */}
                 <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full border-2 border-gold/30 bg-white/5">
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy to-[#0D1B30]">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy to-[#0A0A0A]">
                     <span className="font-display text-2xl text-gold/50">
                       {story.player_name[0]}
                     </span>
@@ -309,7 +309,7 @@ export default function FoundationPage() {
       </section>
 
       {/* ===== FOUNDATION TEAM ===== */}
-      <section className="relative bg-[#0D1B30] py-24">
+      <section className="relative bg-[#0A0A0A] py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-accent text-sm uppercase tracking-[0.25em] text-gold">
@@ -328,7 +328,7 @@ export default function FoundationPage() {
                 className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center transition-all duration-300 hover:border-gold/20"
               >
                 <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full border-2 border-gold/20 bg-white/5">
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy to-[#0D1B30]">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy to-[#0A0A0A]">
                     <span className="font-display text-2xl text-gold/60">
                       {founder.name
                         .split(" ")
@@ -443,7 +443,7 @@ export default function FoundationPage() {
       </section>
 
       {/* ===== DONATION CTA ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0D1B30] to-navy py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0A0A] to-navy py-24">
         <div className="absolute inset-0 opacity-[0.03]">
           {Array.from({ length: 5 }).map((_, i) => (
             <div

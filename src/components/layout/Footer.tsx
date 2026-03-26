@@ -66,7 +66,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#0A1628] text-[#F5F0E8]">
+    <footer className="relative bg-[#000000] text-[#FFFFFF]">
       {/* Stitching divider */}
       <div className="stitching-divider" />
 
@@ -83,7 +83,7 @@ export default function Footer() {
             <p className="mt-3 font-oswald text-lg uppercase tracking-wide text-[#F5A623]/80">
               From South LA to the Big Leagues
             </p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#F5F0E8]/60">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#FFFFFF]/60">
               {SITE_NAME} is a 501(c)(3) nonprofit building the next generation
               of players, leaders, and men through baseball.
             </p>
@@ -96,7 +96,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#F5F0E8]/15 text-[#F5F0E8]/60 transition-all hover:border-[#F5A623] hover:text-[#F5A623]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#FFFFFF]/15 text-[#FFFFFF]/60 transition-all hover:border-[#F5A623] hover:text-[#F5A623]"
                   aria-label={social.label}
                 >
                   <social.icon className="h-4 w-4" />
@@ -117,7 +117,7 @@ export default function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-sm text-[#F5F0E8]/60 transition-colors hover:text-[#F5F0E8]"
+                        className="text-sm text-[#FFFFFF]/60 transition-colors hover:text-[#FFFFFF]"
                       >
                         {link.label}
                       </Link>
@@ -133,7 +133,7 @@ export default function Footer() {
             <h3 className="font-oswald text-xs uppercase tracking-[0.2em] text-[#F5A623]">
               Stay in the Game
             </h3>
-            <p className="mt-3 text-sm text-[#F5F0E8]/60">
+            <p className="mt-3 text-sm text-[#FFFFFF]/60">
               Get updates on events, player stories, and ways to support South
               LA baseball.
             </p>
@@ -152,12 +152,12 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="flex-1 rounded-md border border-[#F5F0E8]/15 bg-[#F5F0E8]/5 px-4 py-2.5 text-sm text-[#F5F0E8] placeholder:text-[#F5F0E8]/30 focus:border-[#F5A623] focus:outline-none focus:ring-1 focus:ring-[#F5A623]"
+                  className="flex-1 rounded-md border border-[#FFFFFF]/15 bg-[#FFFFFF]/5 px-4 py-2.5 text-sm text-[#FFFFFF] placeholder:text-[#FFFFFF]/30 focus:border-[#F5A623] focus:outline-none focus:ring-1 focus:ring-[#F5A623]"
                 />
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="bg-[#F5A623] px-4 text-[#0A1628] hover:bg-[#F5A623]/90 disabled:opacity-50"
+                  className="bg-[#F5A623] px-4 text-[#000000] hover:bg-[#F5A623]/90 disabled:opacity-50"
                   aria-label="Subscribe"
                 >
                   <ArrowRight className="h-4 w-4" />
@@ -166,11 +166,11 @@ export default function Footer() {
             )}
 
             {/* Contact Info */}
-            <div className="mt-8 space-y-2 text-xs text-[#F5F0E8]/40">
+            <div className="mt-8 space-y-2 text-xs text-[#FFFFFF]/40">
               <p>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="transition-colors hover:text-[#F5F0E8]/70"
+                  className="transition-colors hover:text-[#FFFFFF]/70"
                 >
                   {CONTACT_EMAIL}
                 </a>
@@ -181,11 +181,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-[#F5F0E8]/10 pt-8 sm:flex-row">
-          <p className="text-xs text-[#F5F0E8]/30">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-[#FFFFFF]/10 pt-8 sm:flex-row">
+          <p className="text-xs text-[#FFFFFF]/30">
             &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
           </p>
-          <p className="text-xs text-[#F5F0E8]/30">
+          <p className="text-xs text-[#FFFFFF]/30">
             A 501(c)(3) nonprofit organization &middot; EIN {EIN}
           </p>
         </div>

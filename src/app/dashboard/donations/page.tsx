@@ -11,7 +11,7 @@ const SUMMARY = [
   { label: "Total Donated", value: 4875000, icon: DollarSign, color: "bg-emerald-500" },
   { label: "Monthly Recurring", value: 875000, icon: Repeat, color: "bg-blue-500" },
   { label: "One-Time", value: 4000000, icon: Zap, color: "bg-[#F5A623]" },
-  { label: "Average Donation", value: 8125, icon: TrendingUp, color: "bg-[#C8102E]" },
+  { label: "Average Donation", value: 8125, icon: TrendingUp, color: "bg-[#F5A623]" },
 ];
 
 interface SampleDonation {

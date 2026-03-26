@@ -83,7 +83,7 @@ const NEWS_ITEMS = [
 ];
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Press: "bg-bbg-red/20 text-bbg-red border-bbg-red/30",
+  Press: "bg-gold/20 text-gold border-gold/30",
   "Event Recap": "bg-gold/20 text-gold border-gold/30",
   "Player Spotlight": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
   Community: "bg-sky-500/20 text-sky-400 border-sky-500/30",
@@ -118,7 +118,7 @@ export default function NewsPage() {
             Coverage, recaps, and stories from the BBG movement. The world is
             starting to pay attention.
           </p>
-          <div className="mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-bbg-red via-gold to-bbg-red" />
+          <div className="mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-gold via-gold to-gold" />
         </div>
       </section>
 
