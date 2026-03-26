@@ -70,7 +70,7 @@ export default function EventsStrip() {
                   <div className="relative aspect-[16/9] w-full">
                     <Image
                       src="/images/events/allstar-game.webp"
-                      alt={event.name}
+                      alt={event.name ?? "BBG Event"}
                       fill
                       className="object-cover"
                     />
@@ -102,7 +102,7 @@ export default function EventsStrip() {
 
                   {/* Event info */}
                   <h3 className="font-display text-2xl text-white mb-2 group-hover:text-gold transition-colors">
-                    {event.name}
+                    {event.name ?? "BBG Event"}
                   </h3>
                   {event.location_name && (
                     <p className="font-body text-white/50 text-sm mb-2 flex items-center gap-1.5">
