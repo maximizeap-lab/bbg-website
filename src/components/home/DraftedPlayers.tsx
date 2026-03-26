@@ -2,8 +2,33 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { DRAFTED_PLAYERS, MLB_TEAMS } from "@/lib/constants";
+
+function PlayerHeadshot({ player, size = 56 }: { player: typeof DRAFTED_PLAYERS[number]; size?: number }) {
+  const initials = player.name.split(" ").map((n) => n[0]).join("");
+  if (player.headshot) {
+    return (
+      <Image
+        src={player.headshot}
+        alt={player.name}
+        width={size}
+        height={size}
+        className="rounded-full object-cover shrink-0"
+        style={{ width: size, height: size }}
+      />
+    );
+  }
+  return (
+    <span
+      className="inline-flex items-center justify-center rounded-full bg-[#F5A623] text-black font-accent font-bold shrink-0"
+      style={{ width: size, height: size, fontSize: size * 0.32 }}
+    >
+      {initials}
+    </span>
+  );
+}
 
 const firstRounders = DRAFTED_PLAYERS.filter((p) => p.round === "1st Round");
 const remaining = DRAFTED_PLAYERS.filter((p) => p.round !== "1st Round");
@@ -97,6 +122,7 @@ export default function DraftedPlayersSection() {
                 variants={cardUp}
                 className="group relative flex items-center gap-4 rounded-lg border-l-4 border-[#F5A623] bg-white/[0.03] px-5 py-5 hover:bg-white/[0.06] transition-colors duration-300"
               >
+                <PlayerHeadshot player={player} size={56} />
                 <div className="flex-1 min-w-0">
                   <h3 className="font-display text-2xl text-white leading-tight group-hover:text-[#F5A623] transition-colors">
                     {player.name}
@@ -166,6 +192,8 @@ export default function DraftedPlayersSection() {
                     variants={cardUp}
                     className="flex items-center justify-between rounded-md bg-white/[0.03] px-4 py-3 hover:bg-white/[0.06] transition-colors duration-200"
                   >
+                    <div className="flex items-center gap-3 min-w-0">
+                    <PlayerHeadshot player={player} size={32} />
                     <div className="min-w-0">
                       <p className="font-display text-base text-white truncate">
                         {player.name}
@@ -173,6 +201,7 @@ export default function DraftedPlayersSection() {
                       <p className="font-accent text-[#F5A623] text-sm uppercase tracking-wider truncate">
                         {player.team}
                       </p>
+                    </div>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0 ml-3">

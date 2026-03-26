@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/home/Testimonials";
 import DonationCTA from "@/components/home/DonationCTA";
 import MerchPreview from "@/components/home/MerchPreview";
 import Partners from "@/components/home/Partners";
+import LiveNewsFeed from "@/components/home/LiveNewsFeed";
 
 function StitchingDivider({ className = "" }: { className?: string }) {
   return (
@@ -69,6 +70,11 @@ export default function HomePage() {
 
       {/* MLB Partners & Affiliations */}
       <Partners />
+
+      <StitchingDivider />
+
+      {/* Live News Feed */}
+      <LiveNewsFeed />
     </main>
   );
 }

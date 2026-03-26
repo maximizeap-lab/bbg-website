@@ -2,7 +2,32 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { DRAFTED_PLAYERS, MLB_TEAMS } from "@/lib/constants";
+
+function PlayerHeadshot({ player, size = 40 }: { player: typeof DRAFTED_PLAYERS[number]; size?: number }) {
+  const initials = player.name.split(" ").map((n) => n[0]).join("");
+  if (player.headshot) {
+    return (
+      <Image
+        src={player.headshot}
+        alt={player.name}
+        width={size}
+        height={size}
+        className="rounded-full object-cover shrink-0"
+        style={{ width: size, height: size }}
+      />
+    );
+  }
+  return (
+    <span
+      className="inline-flex items-center justify-center rounded-full bg-[#F5A623] text-black font-accent text-xs font-bold shrink-0"
+      style={{ width: size, height: size }}
+    >
+      {initials}
+    </span>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 /*  Filter helpers                                                     */
@@ -196,7 +221,8 @@ export default function DraftPage() {
       <section className="px-6 py-12">
         <div className="mx-auto max-w-6xl">
           {/* Desktop header row */}
-          <div className="hidden md:grid md:grid-cols-[1fr_200px_140px_80px] gap-4 px-5 pb-3 border-b border-white/10 font-accent text-[11px] uppercase tracking-widest text-white/40">
+          <div className="hidden md:grid md:grid-cols-[48px_1fr_200px_140px_80px] gap-4 px-5 pb-3 border-b border-white/10 font-accent text-[11px] uppercase tracking-widest text-white/40">
+            <span></span>
             <span>Player</span>
             <span>Team</span>
             <span>Round</span>
@@ -225,7 +251,8 @@ export default function DraftPage() {
                   className="group rounded-lg bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-200"
                 >
                   {/* Desktop */}
-                  <div className="hidden md:grid md:grid-cols-[1fr_200px_140px_80px] gap-4 items-center px-5 py-4">
+                  <div className="hidden md:grid md:grid-cols-[48px_1fr_200px_140px_80px] gap-4 items-center px-5 py-4">
+                    <PlayerHeadshot player={player} size={40} />
                     <h3 className="font-display text-lg text-white group-hover:text-[#F5A623] transition-colors">
                       {player.name}
                     </h3>
@@ -245,7 +272,10 @@ export default function DraftPage() {
 
                   {/* Mobile */}
                   <div className="flex md:hidden items-center justify-between px-4 py-3">
-                    <div className="min-w-0">
+                    <div className="shrink-0 mr-3">
+                      <PlayerHeadshot player={player} size={36} />
+                    </div>
+                    <div className="min-w-0 flex-1">
                       <p className="font-display text-base text-white truncate group-hover:text-[#F5A623] transition-colors">
                         {player.name}
                       </p>
