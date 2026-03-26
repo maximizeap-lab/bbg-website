@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Calendar,
   MapPin,
@@ -75,7 +76,15 @@ export default async function EventDetailPage({
     <div className="min-h-screen bg-navy">
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-bbg-red/20 via-navy to-gold/10" />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/events/allstar-game.webp"
+            alt={event.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-navy/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
         <div className="relative z-10 mx-auto max-w-5xl px-6 pb-16 pt-36">
           {/* Status badge */}
@@ -162,24 +171,33 @@ export default async function EventDetailPage({
                 </div>
               )}
 
-              {/* Photo Gallery Placeholder */}
+              {/* Photo Gallery */}
               <div className="mb-12">
                 <h2 className="mb-4 font-display text-3xl text-white">
                   Photos
                 </h2>
                 <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-                  {Array.from({ length: 6 }).map((_, i) => (
+                  {[
+                    "/images/events/allstar-01.jpg",
+                    "/images/events/allstar-10.jpg",
+                    "/images/events/allstar-20.jpg",
+                    "/images/events/allstar-30.jpg",
+                    "/images/events/allstar-40.jpg",
+                    "/images/events/allstar-50.jpg",
+                  ].map((src, i) => (
                     <div
                       key={i}
-                      className="flex aspect-square items-center justify-center rounded-lg border border-white/5 bg-white/[0.02]"
+                      className="relative aspect-square overflow-hidden rounded-lg border border-white/5"
                     >
-                      <ImageIcon className="h-8 w-8 text-white/10" />
+                      <Image
+                        src={src}
+                        alt={`${event.name} photo ${i + 1}`}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   ))}
                 </div>
-                <p className="mt-3 font-body text-xs text-white/30">
-                  Photos will be uploaded after the event.
-                </p>
               </div>
             </div>
 

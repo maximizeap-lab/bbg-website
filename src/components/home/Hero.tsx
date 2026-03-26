@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -47,12 +48,20 @@ export default function Hero() {
         src="/videos/hero.mp4"
       />
 
-      {/* Gradient fallback (visible when video hasn't loaded) */}
+      {/* Image fallback (visible when video hasn't loaded) */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br from-navy via-[#0f2140] to-[#1a0a12] transition-opacity duration-1000 ${
+        className={`absolute inset-0 transition-opacity duration-1000 ${
           videoLoaded ? "opacity-0" : "opacity-100"
         }`}
-      />
+      >
+        <Image
+          src="/images/hero-main.webp"
+          alt="BBG All-Star Game"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
 
       {/* Navy-to-transparent gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-transparent" />

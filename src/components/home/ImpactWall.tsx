@@ -1,17 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SAMPLE_IMPACT_STORIES, INSTAGRAM_HANDLE } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 
+const GRID_IMAGES = [
+  "/images/events/allstar-01.jpg",
+  "/images/events/allstar-10.jpg",
+  "/images/events/allstar-20.jpg",
+  "/images/events/allstar-30.jpg",
+  "/images/events/allstar-40.jpg",
+  "/images/events/allstar-50.jpg",
+];
+
 const PLACEHOLDER_GRADIENTS = [
-  "from-navy/80 to-bbg-red/60",
-  "from-[#1a2d4a] to-[#2a1020]",
-  "from-navy/70 to-gold/30",
-  "from-[#0f2140] to-navy",
-  "from-bbg-red/40 to-navy/80",
-  "from-navy to-[#1a0a12]",
   "from-[#2a1020] to-navy/90",
   "from-gold/20 to-navy/80",
   "from-navy/60 to-bbg-red/30",
@@ -37,6 +41,7 @@ const cardVariants = {
 };
 
 export default function ImpactWall() {
+  const allItems = [...GRID_IMAGES.map((src) => ({ type: "image" as const, src })), ...PLACEHOLDER_GRADIENTS.map((gradient) => ({ type: "gradient" as const, gradient }))];
   const [visiblePosts, setVisiblePosts] = useState(6);
 
   return (
@@ -121,15 +126,24 @@ export default function ImpactWall() {
           viewport={{ once: true }}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"
         >
-          {PLACEHOLDER_GRADIENTS.slice(0, visiblePosts).map((gradient, i) => (
+          {allItems.slice(0, visiblePosts).map((item, i) => (
             <motion.div
               key={i}
               variants={cardVariants}
               className="group cursor-pointer"
             >
               <div
-                className={`aspect-square rounded-md bg-gradient-to-br ${gradient} relative overflow-hidden border border-white/5 hover:border-gold/30 transition-all duration-300`}
+                className={`aspect-square rounded-md relative overflow-hidden border border-white/5 hover:border-gold/30 transition-all duration-300 ${item.type === "gradient" ? `bg-gradient-to-br ${item.gradient}` : ""}`}
               >
+                {item.type === "image" && (
+                  <Image
+                    src={item.src}
+                    alt="BBG event photo"
+                    fill
+                    className="object-cover"
+                  />
+                )}
+
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-navy/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -137,22 +151,24 @@ export default function ImpactWall() {
                   </svg>
                 </div>
 
-                {/* Subtle shimmer effect placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                  <div className="w-8 h-8 rounded-full border-2 border-white/30" />
-                </div>
+                {/* Subtle shimmer effect placeholder (gradient items only) */}
+                {item.type === "gradient" && (
+                  <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                    <div className="w-8 h-8 rounded-full border-2 border-white/30" />
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Load More */}
-        {visiblePosts < PLACEHOLDER_GRADIENTS.length && (
+        {visiblePosts < allItems.length && (
           <div className="mt-10 text-center">
             <Button
               variant="outline-gold"
               size="default"
-              onClick={() => setVisiblePosts(PLACEHOLDER_GRADIENTS.length)}
+              onClick={() => setVisiblePosts(allItems.length)}
             >
               Load More
             </Button>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -17,7 +18,13 @@ export default function AboutTeaser() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="aspect-[4/5] rounded-lg bg-gradient-to-br from-[#1a2d4a] via-[#0f2140] to-[#2a1020] overflow-hidden relative">
+            <div className="aspect-[4/5] rounded-lg overflow-hidden relative">
+              <Image
+                src="/images/founders/founders-group.webp"
+                alt="BBG Founders"
+                fill
+                className="object-cover"
+              />
               {/* Decorative elements */}
               <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">

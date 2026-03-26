@@ -72,7 +72,13 @@ export default function FoundationPage() {
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden bg-navy pt-32 pb-24">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy" />
+          <Image
+            src="/images/hero-main.webp"
+            alt="BBG youth baseball"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/95 to-navy" />
           <div className="absolute inset-0 opacity-[0.03]">
             {Array.from({ length: 8 }).map((_, i) => (
               <div

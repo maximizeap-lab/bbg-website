@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -382,14 +383,35 @@ export default async function PlayerProfilePage({
       </section>
 
       {/* ================================================================== */}
-      {/*  PHOTO GALLERY PLACEHOLDER                                         */}
+      {/*  PHOTO GALLERY                                                     */}
       {/* ================================================================== */}
       <section className="mx-auto max-w-7xl px-6 py-16">
         <h2 className="mb-8 font-display text-3xl text-white">GALLERY</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, i) => (
+          {[
+            "/images/players/player-action-1.jpg",
+            "/images/players/player-action-2.jpg",
+            "/images/players/player-action-3.jpg",
+            "/images/players/player-action-4.jpg",
+            "/images/players/player-action-5.jpg",
+            "/images/players/player-action-6.jpg",
+          ].map((src, i) => (
             <div
               key={i}
+              className="relative aspect-square overflow-hidden rounded-xl"
+            >
+              <Image
+                src={src}
+                alt={`${player.first_name} ${player.last_name} action photo ${i + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+          {/* Remaining placeholders */}
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div
+              key={`placeholder-${i}`}
               className="aspect-square rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02]"
             />
           ))}

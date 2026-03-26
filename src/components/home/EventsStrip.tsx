@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SEED_EVENTS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
@@ -64,7 +65,19 @@ export default function EventsStrip() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex-shrink-0 w-[320px] md:w-[380px] group"
               >
-                <div className="bg-white/5 border border-white/10 rounded-lg p-6 h-full flex flex-col hover:bg-white/10 hover:border-gold/30 transition-all duration-300">
+                <div className="bg-white/5 border border-white/10 rounded-lg overflow-hidden h-full flex flex-col hover:bg-white/10 hover:border-gold/30 transition-all duration-300">
+                  {/* Event image */}
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src="/images/events/allstar-game.webp"
+                      alt={event.name}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-1">
                   {/* Date badge + past label */}
                   <div className="flex items-start justify-between mb-5">
                     {date && (
@@ -115,6 +128,7 @@ export default function EventsStrip() {
                         </svg>
                       </Link>
                     </Button>
+                  </div>
                   </div>
                 </div>
               </motion.div>
