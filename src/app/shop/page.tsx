@@ -5,7 +5,6 @@ import { useCartStore } from "@/lib/store";
 import { SHOP_PRODUCTS } from "@/lib/constants";
 import { formatCents } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import CartDrawer from "@/components/shop/CartDrawer";
 
 export default function ShopPage() {
   const { addItem, toggleCart, totalItems } = useCartStore();
@@ -23,9 +22,6 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen bg-navy">
-      {/* Cart Drawer */}
-      <CartDrawer />
-
       {/* Floating Cart Button */}
       <button
         onClick={toggleCart}

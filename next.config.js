@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
   output: "export",
   trailingSlash: true,
+  basePath: isProd ? "/bbg-website" : "",
+  assetPrefix: isProd ? "/bbg-website/" : "",
   images: {
     unoptimized: true,
     remotePatterns: [
