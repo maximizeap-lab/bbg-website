@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 type TabValue = "upcoming" | "past";
 
 export default function EventsPage() {
-  const [activeTab, setActiveTab] = useState<TabValue>("upcoming");
+  const hasUpcoming = SEED_EVENTS.some((e) => e.status === "upcoming");
+  const [activeTab, setActiveTab] = useState<TabValue>(hasUpcoming ? "upcoming" : "past");
 
   const filteredEvents = SEED_EVENTS.filter(
     (event) => event.status === activeTab
