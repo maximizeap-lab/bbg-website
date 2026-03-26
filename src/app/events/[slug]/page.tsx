@@ -34,8 +34,8 @@ export async function generateMetadata({
     return { title: `Event Not Found | ${SITE_NAME}` };
   }
   return {
-    title: `${event.name} | ${SITE_NAME}`,
-    description: event.description ?? `${event.name} — a Baseball Generations event.`,
+    title: `${event.name ?? "Event"} | ${SITE_NAME}`,
+    description: event.description ?? `${event.name ?? "Event"} — a Baseball Generations event.`,
   };
 }
 
@@ -79,7 +79,7 @@ export default async function EventDetailPage({
         <div className="absolute inset-0">
           <Image
             src="/images/events/allstar-game.webp"
-            alt={event.name}
+            alt={event.name ?? "BBG Event"}
             fill
             className="object-cover"
           />
@@ -101,7 +101,7 @@ export default async function EventDetailPage({
           </div>
 
           <h1 className="mb-6 font-display text-5xl text-white md:text-6xl lg:text-7xl">
-            {event.name}
+            {event.name ?? "BBG Event"}
           </h1>
 
           {/* Quick info bar */}
@@ -191,7 +191,7 @@ export default async function EventDetailPage({
                     >
                       <Image
                         src={src}
-                        alt={`${event.name} photo ${i + 1}`}
+                        alt={`${event.name ?? "BBG Event"} photo ${i + 1}`}
                         fill
                         className="object-cover"
                       />
