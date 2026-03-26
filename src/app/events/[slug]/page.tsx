@@ -18,6 +18,10 @@ function findEvent(slug: string) {
   return SEED_EVENTS.find((e) => e.slug === slug) ?? null;
 }
 
+export function generateStaticParams() {
+  return SEED_EVENTS.map((e) => ({ slug: e.slug! }));
+}
+
 export async function generateMetadata({
   params,
 }: {
