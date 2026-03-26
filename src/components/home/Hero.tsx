@@ -105,7 +105,7 @@ export default function Hero() {
             animate="visible"
             className="font-body text-white/80 text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
           >
-            12+ players drafted. 50+ college commitments. 500+ lives changed.
+            44+ players drafted. 14 first-round picks. 500+ lives changed.
             Baseball Generations is South LA&apos;s pipeline to the pros.
           </motion.p>
 

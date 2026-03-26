@@ -7,6 +7,7 @@ import ImpactWall from "@/components/home/ImpactWall";
 import TestimonialsSection from "@/components/home/Testimonials";
 import DonationCTA from "@/components/home/DonationCTA";
 import MerchPreview from "@/components/home/MerchPreview";
+import Partners from "@/components/home/Partners";
 
 function StitchingDivider({ className = "" }: { className?: string }) {
   return (
@@ -63,6 +64,11 @@ export default function HomePage() {
 
       {/* Merch preview */}
       <MerchPreview />
+
+      <StitchingDivider />
+
+      {/* MLB Partners & Affiliations */}
+      <Partners />
     </main>
   );
 }

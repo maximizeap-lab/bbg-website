@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -13,72 +14,72 @@ export const metadata: Metadata = {
   },
 };
 
-/*
- * NOTE: This page currently uses placeholder data.
- * It will eventually pull from Sanity CMS once the content
- * management integration is complete.
- */
-
 const NEWS_ITEMS = [
   {
     id: "1",
-    date: "2024-11-15",
+    date: "2025-01-20",
     category: "Press",
-    headline: "Yahoo Sports: How Baseball Generations Is Changing the Game for South LA Youth",
+    headline: "BBG Produces 14 First-Round Draft Picks",
     excerpt:
-      "A deep dive into how Dom Smith, Ron Miller, and Tim Ravare are tackling baseball's access problem — one free camp at a time. Yahoo Sports profiles the movement reshaping youth baseball in South Los Angeles.",
+      "Yahoo Sports profiles how Baseball Generations has quietly become one of the most prolific pipelines in amateur baseball, producing 14 first-round MLB Draft picks from its free showcases and development programs in South LA.",
     source: "Yahoo Sports",
     slug: "#",
+    image: "/images/events/allstar-03.jpg",
   },
   {
     id: "2",
-    date: "2024-10-22",
-    category: "Event Recap",
-    headline: "BBG 6th Annual All-Star Game Draws Record Crowd at Blair Field",
+    date: "2024-11-15",
+    category: "Press",
+    headline: "Dominic Smith's Baseball Generations Changes Lives in South LA",
     excerpt:
-      "Over 50 top high school players competed in front of college coaches and MLB scouts at Long Beach's historic Blair Field. Multiple players received offers on the spot.",
-    source: "Baseball Generations",
+      "Baseball America goes inside the movement co-founded by Mets first baseman Dominic Smith, exploring how BBG's free camps and showcases are reshaping the landscape of youth baseball access in underserved communities.",
+    source: "Baseball America",
     slug: "#",
+    image: "/images/events/allstar-07.jpg",
   },
   {
     id: "3",
-    date: "2024-09-30",
-    category: "Press",
-    headline: "Baseball America Highlights BBG's All-American Game at LMU",
+    date: "2024-10-22",
+    category: "Player Spotlight",
+    headline: "Druw Jones to J.P. Crawford: The BBG Pipeline",
     excerpt:
-      "Baseball America spotlights the BBG All-American Game at Loyola Marymount University, calling it 'one of the most important grassroots events in Southern California baseball.'",
-    source: "Baseball America",
+      "ESPN traces the remarkable pipeline from BBG showcases to professional baseball, from #2 overall pick Druw Jones to Mariners shortstop J.P. Crawford, who now coaches at the same events that shaped his career.",
+    source: "ESPN",
     slug: "#",
+    image: "/images/events/allstar-11.jpg",
   },
   {
     id: "4",
-    date: "2024-08-12",
-    category: "Player Spotlight",
-    headline: "Marcus Commits to Kansas State on Full Baseball Scholarship",
+    date: "2024-09-30",
+    category: "Event Recap",
+    headline: "BBG 6th All-Star Game Draws Top Talent to Long Beach",
     excerpt:
-      "BBG alum Marcus — who first came to a free BBG camp in 2019 from Compton — has officially signed with Kansas State. 'BBG gave me a chance when nobody else would,' he said.",
-    source: "Baseball Generations",
+      "The562.org covers the 6th Annual BBG All-Star Game at Blair Field in Long Beach, where over 50 top high school players competed in front of college coaches and MLB scouts. Multiple players received offers on the spot.",
+    source: "The562.org",
     slug: "#",
+    image: "/images/events/allstar-13.jpg",
   },
   {
     id: "5",
-    date: "2024-07-05",
-    category: "Community",
-    headline: "BBG Partners with LA Unified to Bring Free Clinics to 12 Schools",
+    date: "2024-08-12",
+    category: "Press",
+    headline: "From Compton Fields to Pro Diamonds: Inside BBG",
     excerpt:
-      "In a landmark partnership, Baseball Generations will run free baseball clinics at 12 LAUSD campuses across South LA during the 2024-2025 school year, reaching an estimated 500 new players.",
-    source: "Baseball Generations",
+      "The LA Times profiles the grassroots baseball revolution happening in South Los Angeles, where three Serra High School alumni are proving that talent has no zip code — and that free programs can outperform pay-to-play travel ball.",
+    source: "LA Times",
     slug: "#",
+    image: "/images/events/allstar-17.jpg",
   },
   {
     id: "6",
-    date: "2024-05-18",
+    date: "2024-07-05",
     category: "Press",
-    headline: "Dom Smith on ESPN: 'I Play for the Kids Who Can't Afford Travel Ball'",
+    headline: "44 Players Drafted: How BBG Became MLB's Best-Kept Secret",
     excerpt:
-      "In an emotional ESPN interview, Mets-turned-Braves first baseman Dominic Smith opens up about his South LA roots and why he co-founded Baseball Generations with childhood friends Ron Miller and Tim Ravare.",
-    source: "ESPN",
+      "MLB.com dives deep into Baseball Generations' unprecedented track record — 44 players drafted, 14 first-rounders, and counting — examining how a free nonprofit in South LA outpaces elite travel ball organizations.",
+    source: "MLB.com",
     slug: "#",
+    image: "/images/events/allstar-21.jpg",
   },
 ];
 
@@ -131,23 +132,16 @@ export default function NewsPage() {
                 key={item.id}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-500 hover:border-gold/20 hover:bg-white/[0.06]"
               >
-                {/* Image placeholder */}
-                <div className="relative h-48 w-full bg-gradient-to-br from-white/[0.06] to-white/[0.02]">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg
-                      className="h-12 w-12 text-white/10"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1}
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5"
-                      />
-                    </svg>
-                  </div>
+                {/* Image thumbnail */}
+                <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.headline}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   {/* Category badge */}
                   <div className="absolute left-4 top-4">
                     <span

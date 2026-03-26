@@ -275,6 +275,81 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ===== IN THE NEWS PREVIEW ===== */}
+      <section className="relative bg-navy py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <p className="font-accent text-sm uppercase tracking-[0.25em] text-gold">
+              Press Coverage
+            </p>
+            <h2 className="mt-3 font-display text-5xl uppercase text-white md:text-6xl">
+              In The News
+            </h2>
+          </div>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {[
+              {
+                image: "/images/events/allstar-03.jpg",
+                headline: "BBG Produces 14 First-Round Draft Picks",
+                source: "Yahoo Sports",
+              },
+              {
+                image: "/images/events/allstar-07.jpg",
+                headline: "Dominic Smith's Baseball Generations Changes Lives in South LA",
+                source: "Baseball America",
+              },
+              {
+                image: "/images/events/allstar-11.jpg",
+                headline: "Druw Jones to J.P. Crawford: The BBG Pipeline",
+                source: "ESPN",
+              },
+            ].map((article) => (
+              <Link
+                key={article.headline}
+                href="/news"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-500 hover:border-gold/20 hover:bg-white/[0.06]"
+              >
+                <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  <Image
+                    src={article.image}
+                    alt={article.headline}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <span className="font-accent text-[10px] uppercase tracking-wider text-gold/70">
+                    {article.source}
+                  </span>
+                  <h3 className="mt-2 font-display text-lg uppercase leading-tight text-white transition-colors duration-300 group-hover:text-gold">
+                    {article.headline}
+                  </h3>
+                  <span className="mt-4 inline-flex items-center gap-2 font-accent text-xs uppercase tracking-[0.2em] text-gold">
+                    Read More
+                    <svg
+                      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== CTA ===== */}
       <section className="relative bg-gradient-to-b from-[#0A0A0A] to-navy py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
