@@ -4,11 +4,12 @@ import DraftedPlayersSection from "@/components/home/DraftedPlayers";
 import AboutTeaser from "@/components/home/AboutTeaser";
 import EventsStrip from "@/components/home/EventsStrip";
 import ImpactWall from "@/components/home/ImpactWall";
+import VideoShowcase from "@/components/home/VideoShowcase";
 import TestimonialsSection from "@/components/home/Testimonials";
 import DonationCTA from "@/components/home/DonationCTA";
+import LiveNewsFeed from "@/components/home/LiveNewsFeed";
 import MerchPreview from "@/components/home/MerchPreview";
 import Partners from "@/components/home/Partners";
-import LiveNewsFeed from "@/components/home/LiveNewsFeed";
 
 function StitchingDivider({ className = "" }: { className?: string }) {
   return (
@@ -29,52 +30,49 @@ function StitchingDivider({ className = "" }: { className?: string }) {
 export default function HomePage() {
   return (
     <main className="overflow-hidden">
-      {/* Hero — full viewport */}
+      {/* 1. Hero — full viewport */}
       <Hero />
 
-      {/* Impact stats counter */}
+      {/* 2. Impact stats counter */}
       <ImpactCounters />
 
       <StitchingDivider />
 
-      {/* Drafted players showcase */}
+      {/* 3. Drafted players showcase */}
       <DraftedPlayersSection />
 
-      <StitchingDivider />
-
-      {/* About BBG teaser */}
+      {/* 4. About BBG teaser */}
       <AboutTeaser />
 
-      {/* Upcoming events horizontal strip */}
+      {/* 5. Upcoming events horizontal strip */}
       <EventsStrip />
 
       <StitchingDivider />
 
-      {/* Impact stories + Instagram wall */}
+      {/* 6. Impact stories + Instagram wall */}
       <ImpactWall />
 
       <StitchingDivider />
 
-      {/* Testimonials carousel */}
+      {/* 7. Video Showcase — See It In Action */}
+      <VideoShowcase />
+
+      {/* 8. Testimonials carousel */}
       <TestimonialsSection />
 
-      <StitchingDivider />
-
-      {/* Donation call-to-action */}
+      {/* 9. Donation call-to-action */}
       <DonationCTA />
 
-      {/* Merch preview */}
+      <StitchingDivider />
+
+      {/* 10. BBG Players in the Spotlight */}
+      <LiveNewsFeed />
+
+      {/* 11. Merch preview */}
       <MerchPreview />
 
-      <StitchingDivider />
-
-      {/* MLB Partners & Affiliations */}
+      {/* 12. MLB Partners & Affiliations */}
       <Partners />
-
-      <StitchingDivider />
-
-      {/* Live News Feed */}
-      <LiveNewsFeed />
     </main>
   );
 }
