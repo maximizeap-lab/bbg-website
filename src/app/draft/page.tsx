@@ -78,15 +78,20 @@ function matchesPosition(pos: string, filter: PosFilter): boolean {
 /*  Tiny components                                                    */
 /* ------------------------------------------------------------------ */
 
-function TeamBadge({ team }: { team: string }) {
+function TeamBadge({ team, logoSize = 24 }: { team: string; logoSize?: number }) {
   const info = MLB_TEAMS[team];
   if (!info) return null;
   return (
-    <span
-      className="inline-flex items-center rounded px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white"
-      style={{ backgroundColor: info.color }}
-    >
-      {info.abbr}
+    <span className="inline-flex items-center gap-1.5">
+      <img
+        src={`https://www.mlbstatic.com/team-logos/${info.teamId}.svg`}
+        alt={team}
+        className="object-contain"
+        style={{ height: logoSize, width: logoSize }}
+      />
+      <span className="text-[11px] font-bold uppercase tracking-wide text-white">
+        {info.abbr}
+      </span>
     </span>
   );
 }
@@ -257,7 +262,7 @@ export default function DraftPage() {
                       {player.name}
                     </h3>
                     <div className="flex items-center gap-2">
-                      {info && <TeamBadge team={player.team} />}
+                      {info && <TeamBadge team={player.team} logoSize={24} />}
                       <span className="font-accent text-[#F5A623] text-sm uppercase tracking-wider truncate">
                         {player.team}
                       </span>
@@ -280,7 +285,7 @@ export default function DraftPage() {
                         {player.name}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
-                        {info && <TeamBadge team={player.team} />}
+                        {info && <TeamBadge team={player.team} logoSize={20} />}
                         <span className="font-accent text-[#F5A623] text-xs uppercase tracking-wider truncate">
                           {player.team}
                         </span>

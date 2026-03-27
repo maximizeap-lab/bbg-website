@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
-import { ExternalLink, Newspaper, Clock } from "lucide-react";
-import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, ChevronLeft, ChevronRight, Newspaper } from "lucide-react";
 
 interface Article {
   title: string;
@@ -20,17 +19,16 @@ function relativeTime(dateStr: string): string {
   const diff = now - then;
   const mins = Math.floor(diff / 60000);
   if (mins < 1) return "just now";
-  if (mins < 60) return `${mins}m ago`;
+  if (mins < 60) return `${mins} minute${mins === 1 ? "" : "s"} ago`;
   const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
+  if (hours < 24) return `${hours} hour${hours === 1 ? "" : "s"} ago`;
   const days = Math.floor(hours / 24);
-  if (days < 7) return `${days}d ago`;
+  if (days < 7) return `${days} day${days === 1 ? "" : "s"} ago`;
   return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
 function tagFromSearchTerm(term: string): string {
   if (term.includes("Baseball Generations")) return "BBG";
-  // Extract person name (first two words typically)
   const parts = term.split(" ");
   if (parts.length >= 2) return `${parts[0]} ${parts[1]}`;
   return term;
@@ -58,12 +56,35 @@ const FALLBACK_ARTICLES: Article[] = [
     source: "NBC Sports",
     searchTerm: "Justin Crawford phillies",
   },
+  {
+    title: "Termarr Johnson shines in Pittsburgh Pirates spring training",
+    link: "#",
+    pubDate: new Date().toISOString(),
+    source: "ESPN",
+    searchTerm: "Termarr Johnson",
+  },
+  {
+    title: "South LA baseball program produces another wave of MLB talent",
+    link: "#",
+    pubDate: new Date().toISOString(),
+    source: "Los Angeles Times",
+    searchTerm: "Baseball Generations BBG",
+  },
+  {
+    title: "Mikey Romero continues development with Boston Red Sox organization",
+    link: "#",
+    pubDate: new Date().toISOString(),
+    source: "NESN",
+    searchTerm: "Mikey Romero",
+  },
 ];
 
 export default function LiveNewsFeed() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const fetchNews = useCallback(async () => {
     try {
@@ -86,45 +107,42 @@ export default function LiveNewsFeed() {
 
   useEffect(() => {
     fetchNews();
-    const interval = setInterval(fetchNews, 5 * 60 * 1000); // Auto-refresh every 5 minutes
+    const interval = setInterval(fetchNews, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, [fetchNews]);
 
-  const displayed = articles.slice(0, 12);
+  // Auto-cycle every 4 seconds, pause on hover
+  useEffect(() => {
+    if (isPaused || loading || articles.length === 0) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % articles.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused, loading, articles.length]);
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (articles.length === 0) return;
+      setActiveIndex(((index % articles.length) + articles.length) % articles.length);
+    },
+    [articles.length]
+  );
+
+  const goPrev = useCallback(() => goTo(activeIndex - 1), [goTo, activeIndex]);
+  const goNext = useCallback(() => goTo(activeIndex + 1), [goTo, activeIndex]);
+
+  const activeArticle = articles[activeIndex];
+
+  // Thumbnail articles: next 5 after active
+  const thumbnails = articles.length > 1
+    ? Array.from({ length: Math.min(5, articles.length - 1) }, (_, i) => {
+        const idx = (activeIndex + 1 + i) % articles.length;
+        return { article: articles[idx], index: idx };
+      })
+    : [];
 
   return (
     <section className="bg-black py-24 md:py-32 overflow-hidden">
-      {/* Scrolling ticker */}
-      <div className="relative bg-[#F5A623] py-3 mb-16 overflow-hidden">
-        <div className="animate-marquee whitespace-nowrap flex gap-12">
-          {(loading ? ["Loading latest news..."] : articles.slice(0, 10).map((a) => a.title)).map(
-            (headline, i) => (
-              <span key={i} className="inline-flex items-center gap-3 font-accent text-sm uppercase tracking-wider text-black">
-                <Newspaper className="w-4 h-4 shrink-0" />
-                {headline}
-              </span>
-            )
-          )}
-          {/* Duplicate for seamless loop */}
-          {!loading &&
-            articles.slice(0, 10).map((a, i) => (
-              <span key={`dup-${i}`} className="inline-flex items-center gap-3 font-accent text-sm uppercase tracking-wider text-black">
-                <Newspaper className="w-4 h-4 shrink-0" />
-                {a.title}
-              </span>
-            ))}
-        </div>
-        <style jsx>{`
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            animation: marquee 60s linear infinite;
-          }
-        `}</style>
-      </div>
-
       <div className="mx-auto max-w-7xl px-6 sm:px-12">
         {/* Header */}
         <motion.div
@@ -132,95 +150,144 @@ export default function LiveNewsFeed() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 flex items-end justify-between"
+          className="mb-12"
         >
-          <div>
-            <h2 className="font-display text-5xl md:text-7xl leading-[0.9] text-[#F5A623] mb-3">
-              BBG IN THE NEWS
-            </h2>
-            <p className="font-body text-white/60 text-base md:text-lg max-w-2xl">
-              Live coverage of BBG players, coaches, and alumni across major sports media.
-            </p>
-          </div>
-          <Link
-            href="/feed"
-            className="hidden md:inline-flex items-center gap-2 font-accent text-sm uppercase tracking-widest text-[#F5A623] hover:text-white transition-colors shrink-0"
-          >
-            View All
-            <ExternalLink className="w-4 h-4" />
-          </Link>
+          <h2 className="font-display text-5xl md:text-7xl leading-[0.9] text-[#F5A623] mb-3">
+            LATEST NEWS
+          </h2>
+          <p className="font-body text-white/60 text-base md:text-lg max-w-2xl">
+            Live coverage across major sports media
+          </p>
         </motion.div>
 
-        {/* Grid */}
+        {/* Carousel */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                className="rounded-lg bg-white/[0.03] p-5 animate-pulse"
-              >
-                <div className="h-4 bg-white/10 rounded w-3/4 mb-3" />
-                <div className="h-4 bg-white/10 rounded w-1/2 mb-4" />
-                <div className="h-3 bg-white/5 rounded w-1/3" />
-              </div>
-            ))}
+          /* Loading skeleton */
+          <div className="space-y-6">
+            <div className="rounded-lg bg-white/[0.03] border-l-4 border-white/10 p-8 animate-pulse">
+              <div className="h-3 bg-white/10 rounded w-24 mb-4" />
+              <div className="h-8 bg-white/10 rounded w-3/4 mb-3" />
+              <div className="h-8 bg-white/10 rounded w-1/2 mb-6" />
+              <div className="h-3 bg-white/5 rounded w-1/4" />
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} className="rounded-lg bg-white/[0.03] p-4 animate-pulse">
+                  <div className="h-4 bg-white/10 rounded w-full mb-2" />
+                  <div className="h-3 bg-white/5 rounded w-1/2" />
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {displayed.map((article, i) => (
-              <motion.a
-                key={i}
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="group rounded-lg bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-[#F5A623]/30 p-5 transition-all duration-300"
-              >
-                {/* Tag */}
-                <span className="inline-block rounded-full bg-[#F5A623]/15 px-2.5 py-0.5 font-accent text-[11px] uppercase tracking-wider text-[#F5A623] mb-3">
-                  {tagFromSearchTerm(article.searchTerm)}
-                </span>
+          <div
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Active Article Card */}
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                {activeArticle && (
+                  <motion.a
+                    key={activeIndex}
+                    href={activeArticle.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="block w-full rounded-lg bg-black border border-white/10 border-l-4 border-l-[#F5A623] p-8 md:p-10 group"
+                  >
+                    {/* Tag */}
+                    <span className="inline-block rounded-full bg-[#F5A623]/10 px-3 py-1 font-accent text-[11px] uppercase tracking-wider text-[#F5A623] mb-4">
+                      {tagFromSearchTerm(activeArticle.searchTerm)}
+                    </span>
 
-                {/* Headline */}
-                <h3 className="font-display text-lg text-white group-hover:text-[#F5A623] transition-colors leading-tight mb-3 line-clamp-3">
-                  {article.title}
-                </h3>
+                    {/* Source */}
+                    <p className="font-accent text-[#F5A623] text-sm uppercase tracking-wider mb-2">
+                      {activeArticle.source}
+                    </p>
 
-                {/* Meta */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    {article.source && (
-                      <span className="font-accent text-[#F5A623] text-xs uppercase tracking-wider">
-                        {article.source}
+                    {/* Headline */}
+                    <h3 className="font-display text-3xl md:text-4xl text-white leading-tight mb-4 group-hover:text-[#F5A623] transition-colors">
+                      {activeArticle.title}
+                    </h3>
+
+                    {/* Meta row */}
+                    <div className="flex items-center gap-4">
+                      <span className="font-body text-white/40 text-sm">
+                        {relativeTime(activeArticle.pubDate)}
                       </span>
-                    )}
-                    {article.pubDate && (
-                      <span className="flex items-center gap-1 font-body text-white/40 text-xs">
-                        <Clock className="w-3 h-3" />
-                        {relativeTime(article.pubDate)}
+                      <span className="inline-flex items-center gap-1.5 font-accent text-sm uppercase tracking-wider text-[#F5A623] group-hover:underline">
+                        Read Article
+                        <ExternalLink className="w-4 h-4" />
                       </span>
-                    )}
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-white/20 group-hover:text-[#F5A623] transition-colors" />
-                </div>
-              </motion.a>
-            ))}
+                    </div>
+                  </motion.a>
+                )}
+              </AnimatePresence>
+
+              {/* Navigation Arrows */}
+              {articles.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => { e.preventDefault(); goPrev(); }}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/60 hover:text-[#F5A623] hover:border-[#F5A623]/40 transition-colors"
+                    aria-label="Previous article"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={(e) => { e.preventDefault(); goNext(); }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/60 hover:text-[#F5A623] hover:border-[#F5A623]/40 transition-colors"
+                    aria-label="Next article"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Dot Indicators */}
+            {articles.length > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-6">
+                {articles.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      i === activeIndex
+                        ? "bg-[#F5A623] scale-110"
+                        : "bg-white/20 hover:bg-white/40"
+                    }`}
+                    aria-label={`Go to article ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Thumbnail Preview Cards */}
+            {thumbnails.length > 0 && (
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-6">
+                {thumbnails.map(({ article, index }) => (
+                  <button
+                    key={index}
+                    onClick={() => goTo(index)}
+                    className="text-left rounded-lg bg-white/[0.03] border border-white/5 hover:border-[#F5A623]/30 hover:bg-white/[0.06] p-4 transition-all duration-300"
+                  >
+                    <p className="font-display text-sm text-white leading-tight truncate mb-2">
+                      {article.title}
+                    </p>
+                    <span className="font-accent text-[#F5A623] text-[10px] uppercase tracking-wider">
+                      {article.source}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
-
-        {/* Mobile CTA */}
-        <div className="mt-8 text-center md:hidden">
-          <Link
-            href="/feed"
-            className="inline-flex items-center gap-2 font-accent text-sm uppercase tracking-widest text-[#F5A623] hover:text-white transition-colors"
-          >
-            View All News
-            <ExternalLink className="w-4 h-4" />
-          </Link>
-        </div>
 
         {error && (
           <p className="mt-4 text-center font-body text-white/30 text-xs">

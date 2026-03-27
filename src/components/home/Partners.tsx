@@ -45,26 +45,43 @@ export default function Partners() {
           <div className="mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
         </motion.div>
 
-        {/* Team Badges Grid */}
+        {/* MLB Centerpiece */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-12 flex items-center justify-center"
+        >
+          <span className="font-display text-4xl md:text-5xl uppercase tracking-widest text-[#F5A623]">
+            MLB
+          </span>
+        </motion.div>
+
+        {/* Team Logo Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 justify-items-center"
         >
           {uniqueTeams.map((team) => (
             <div
               key={team.abbr}
-              className="group flex flex-col items-center gap-1.5"
+              className="group flex flex-col items-center gap-2 transition-transform duration-300 hover:scale-110"
             >
-              <div
-                className="flex items-center justify-center rounded-xl px-5 py-3 font-display text-lg uppercase text-white transition-transform duration-300 hover:scale-110"
-                style={{ backgroundColor: team.color }}
-              >
-                {team.abbr}
+              <div className="flex items-center justify-center w-20 h-20 rounded-xl bg-white/[0.04] border border-white/10 group-hover:border-[#F5A623]/30 transition-colors">
+                <img
+                  src={`https://www.mlbstatic.com/team-logos/${team.teamId}.svg`}
+                  alt={team.name}
+                  className="h-10 w-10 object-contain"
+                />
               </div>
-              <span className="font-accent text-[10px] uppercase tracking-wider text-white/50">
+              <span className="font-accent text-[10px] uppercase tracking-wider text-white/60 text-center leading-tight">
+                {team.name}
+              </span>
+              <span className="inline-flex items-center justify-center rounded-full bg-[#F5A623]/10 px-2 py-0.5 font-accent text-[10px] text-[#F5A623]">
                 {team.count} {team.count === 1 ? "player" : "players"}
               </span>
             </div>
