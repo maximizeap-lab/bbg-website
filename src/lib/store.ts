@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import { CartItem } from "@/types";
 
 interface CartStore {
@@ -13,7 +14,7 @@ interface CartStore {
   totalCents: () => number;
 }
 
-export const useCartStore = create<CartStore>((set, get) => ({
+export const useCartStore = create<CartStore>()(persist((set, get) => ({
   items: [],
   isOpen: false,
   addItem: (item) =>
@@ -42,4 +43,4 @@ export const useCartStore = create<CartStore>((set, get) => ({
   totalItems: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
   totalCents: () =>
     get().items.reduce((sum, i) => sum + i.price_cents * i.quantity, 0),
-}));
+}), { name: 'bbg-cart', partialize: (state) => ({ items: state.items }) }));
